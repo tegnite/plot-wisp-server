@@ -12,6 +12,7 @@ COPY package*.json ./
 
 # Install app dependencies
 RUN npm install
+RUN npm install -g npm@latest
 
 # Copy app source
 COPY . .
@@ -33,6 +34,7 @@ COPY tsconfig.json ./
 
 # Install only production dependencies
 RUN npm install --omit=dev
+RUN npm install -g npm@latest
 
 # Copy the built application from the builder stage
 COPY --from=builder /app/dist ./dist
