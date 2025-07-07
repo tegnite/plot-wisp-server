@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 
 async function connect_db() {
-  try {
     const mongo_uri = process.env.MONGO_URI;
     const db_name = process.env.DB_NAME;
 
@@ -14,11 +13,6 @@ async function connect_db() {
 
     await mongoose.connect(mongo_uri, { dbName: db_name });
     console.log('MongoDB Connected...');
-  } catch (err: any) {
-    console.error(err.message);
-    // Exit process with failure
-    process.exit(1);
-  }
 }
 
 export default connect_db;
