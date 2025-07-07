@@ -1,28 +1,11 @@
-import express from 'express';
 import connect_db from '@app/config/db.config';
-import { error_middleware } from '@app/middlewares/error.middleware';
-import cookieParser from 'cookie-parser';
-import auth_routes from "@app/modules/auth/auth.routes";
+import app from "@app/config/app.config";
 
-const app = express();
 const port = 8000;
 
 const start_server = async () => {
     // Connect to database
     await connect_db();
-
-    // Middleware to parse JSON bodies
-    app.use(express.json());
-    app.use(cookieParser());
-
-    app.use('/api/auth', auth_routes);
-
-    app.get('/', (req, res) => {
-        res.send('Hello world! form plot-wisp backend!');
-    });
-
-    // Error handling middleware
-    app.use(error_middleware);
 
     app.listen(port, () => {
         console.log(`Server is running on port ${port}`);
