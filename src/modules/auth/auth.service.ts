@@ -40,6 +40,17 @@ export const Auth_Service = {
 
         const token = get_token_from_user(user);
         return { user, token };
+    },
+
+    async get_me(user_id : string | null | undefined): Promise<{ me : User_Interface, token : string }> {
+        if(!user_id) throw new Error('unauthorized');
+        const user = await User_Repository.find_user_by_id(user_id);
+        if(!user) throw new Error('unauthorized');
+        const token = get_token_from_user(user);
+        return {
+            me : user,
+            token
+        }
     }
 }
 
