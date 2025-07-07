@@ -16,7 +16,7 @@ const start_server = async () => {
     app.use('/api/users', user_routes);
 
     app.get('/', (req, res) => {
-        res.send('Hello World! From Backend');
+        res.send('Hello world! form plot-wisp backend!');
     });
 
     // Error handling middleware

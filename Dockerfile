@@ -40,7 +40,7 @@ RUN npm install -g npm@latest
 COPY --from=builder /app/dist ./dist
 
 # Expose port 3000
-EXPOSE 3000
+EXPOSE 8000
 
 # Start the server
 CMD [ "node", "-r", "tsconfig-paths/register", "dist/index.js" ]

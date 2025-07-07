@@ -5,9 +5,16 @@ export type Gender_Type = typeof GENDERS[number];
 
 export interface User_Interface extends Base_Interface {
     username: string;
-    email: string;
-    password_hash: string;
+    email?: string;
+    password: string;
     gender: Gender_Type;
+    description?: string;
+    birthday?: Date;
+    profile_picture?: string;
+    cover_picture?: string;
 }
 
-export type User_Create_DTO = Omit<User_Interface, '_id' | 'createdAt' | 'updatedAt'>;
+export type User_Create_DTO = Omit<
+    User_Interface,
+    '_id' | 'createdAt' | 'updatedAt' | 'email'
+>;
