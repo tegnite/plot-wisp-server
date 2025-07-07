@@ -16,5 +16,5 @@ export interface User_Interface extends Base_Interface {
 
 export type User_Create_DTO = Omit<
     User_Interface,
-    '_id' | 'createdAt' | 'updatedAt' | 'email'
+    '_id' | 'createdAt' | 'updatedAt' | 'email' | 'birthday' | 'profile_picture' | 'cover_picture'
 >;
