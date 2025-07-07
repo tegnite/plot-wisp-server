@@ -14,7 +14,13 @@ export interface User_Interface extends Base_Interface {
     cover_picture?: string;
 }
 
-export type User_Create_DTO = Omit<
-    User_Interface,
-    '_id' | 'createdAt' | 'updatedAt' | 'email' | 'birthday' | 'profile_picture' | 'cover_picture'
->;
+export interface User_Create_DTO {
+    username: string;
+    password: string;
+    gender: Gender_Type;
+}
+
+export interface User_Login_DTO {
+    username: string;
+    password: string;
+}
