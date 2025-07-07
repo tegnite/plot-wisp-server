@@ -1,7 +1,8 @@
 import express from 'express';
 import connect_db from '@app/config/db.config';
-import user_routes from '@app/modules/users/users.routes';
 import { error_middleware } from '@app/middlewares/error.middleware';
+import cookieParser from 'cookie-parser';
+import auth_routes from "@app/modules/auth/auth.routes";
 
 const app = express();
 const port = 8000;
@@ -12,8 +13,9 @@ const start_server = async () => {
 
     // Middleware to parse JSON bodies
     app.use(express.json());
+    app.use(cookieParser());
 
-    app.use('/api/users', user_routes);
+    app.use('/api/auth', auth_routes);
 
     app.get('/', (req, res) => {
         res.send('Hello world! form plot-wisp backend!');

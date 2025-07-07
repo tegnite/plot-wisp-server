@@ -3,6 +3,7 @@ import { Response } from 'express';
 interface Success_Response_Options {
     status_code?: number;
     message?: string;
+    token? : string;
 }
 
 export const send_success_response = <T>(res: Response, data: T, options?: Success_Response_Options) => {
@@ -13,5 +14,6 @@ export const send_success_response = <T>(res: Response, data: T, options?: Succe
         data,
         status: 'success',
         message,
+        token : options?.token ?? null
     });
 };

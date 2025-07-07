@@ -15,8 +15,12 @@
   "type": "commonjs",
   "dependencies": {
     "@types/bcryptjs": "^2.4.6",
+    "@types/cookie-parser": "^1.4.9",
+    "@types/jsonwebtoken": "^9.0.10",
     "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
     "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.16.1",
     "multer": "^2.0.1",
     "tsconfig-paths": "^4.2.0"
