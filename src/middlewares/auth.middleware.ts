@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import { catch_async } from '@app/utils/catch-async.util';
 import {get_env} from "@app/config/env.config";
 
-export const auth_middleware = catch_async(async (req: Request, res: Response, next: NextFunction) => {
+export const auth_middleware = catch_async(async (req: Request, _: Response, next: NextFunction) => {
     const token = req.cookies.token;
 
     if (!token) {
@@ -15,5 +15,4 @@ export const auth_middleware = catch_async(async (req: Request, res: Response, n
         req.user_id = decoded.id;
         next();
     }
-
 });

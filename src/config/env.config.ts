@@ -1,6 +1,11 @@
 import * as process from "node:process";
 
-const ENV_KEYS = ['MONGO_URI', 'DB_NAME', 'JWT_SECRET'] as const;
+const ENV_KEYS = [
+    'MONGO_URI',
+    'DB_NAME',
+    'JWT_SECRET'
+] as const;
+
 export type ENV_KEYS_TYPE = typeof ENV_KEYS[number];
 
 export function get_env(key : ENV_KEYS_TYPE) : string {
