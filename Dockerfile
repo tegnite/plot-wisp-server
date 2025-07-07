@@ -43,4 +43,4 @@ COPY --from=builder /app/dist ./dist
 EXPOSE 3000
 
 # Start the server
-CMD [ "node", "dist/index.js" ]
+CMD [ "node", "-r", "tsconfig-paths/register", "dist/index.js" ]

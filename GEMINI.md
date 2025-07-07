@@ -6,13 +6,18 @@ This document outlines the coding conventions and best practices for this projec
 
 - **Variables & Functions:** `snake_case` (e.g., `user_name`, `get_user_data`).
 - **Constants:** `SCREAMING_SNAKE_CASE` for global constants (e.g., `PORT`, `MONGO_URI`).
-- **Classes & Types (Interfaces):** `PascalCase` (e.g., `User`, `IUser`).
+- **Types & Interfaces:** `Pascal_Case_With_Underscores` (e.g., `User_Type`, `User_Interface`).
+- **Models:** `Pascal_Case_With_Underscores_And_Model_Suffix` (e.g., `User_Model`).
+- **Services:** `Pascal_Case_With_Underscores_And_Service_Suffix` (e.g., `User_Service`).
+- **Routes:** `Pascal_Case_With_Underscores_And_Routes_Suffix` (e.g., `User_Routes`).
+- **Controllers:** `Pascal_Case_With_Underscores_And_Controller_Suffix` (e.g., `User_Controller`).
+- **Middleware:** `Pascal_Case_With_Underscores_And_Middleware_Suffix` (e.g., `Auth_Middleware`).
 - **Files:** `kebab-case` with `[module].[type].ts` format (e.g., `user.service.ts`, `db.config.ts`).
 - **Folders:** `kebab-case` (e.g., `src/config`, `src/routes`).
 
 ## 2. Code Style
 
-- **Indentation:** 2 spaces (soft tabs).
+- **Indentation:** 4 spaces (hard tabs).
 - **Semicolons:** Always use semicolons at the end of statements.
 - **Quotes:** Prefer single quotes (`'`) for strings, unless escaping is necessary.
 - **Braces:** K&R style (opening brace on the same line as the statement).
@@ -30,9 +35,12 @@ This document outlines the coding conventions and best practices for this projec
 ## 3. Programming Paradigm
 
 - **TypeScript First:** Leverage TypeScript's features (interfaces, types, enums) for strong typing and better code predictability.
-- **Functional Programming Principles:** Where applicable, favor pure functions, immutability, and composition, especially for utility functions and middleware.
-- **Object-Oriented Programming:** Use classes for Mongoose models, Express `Router` instances, and other logical entities where OOP provides clear structure.
-- **Function Declarations:** Prefer using the `function` keyword for function declarations. Use arrow functions or function expressions (functions as variables) only when the `function` keyword cannot be used (e.g., for concise callbacks, immediately invoked function expressions, or when `this` context binding is critical).
+- **Functional Programming First:** The entire codebase should adhere to functional programming principles.
+  - **Purity:** Functions should be pure, meaning they have no side effects (e.g., no network or database calls, no logging, no file system changes). For a given input, a pure function must always return the same output.
+  - **Immutability:** Data structures should be immutable. Avoid in-place modification of objects and arrays. Use techniques like object spreading (`{...obj}`) or array spreading (`[...arr]`) to create new data structures instead of mutating existing ones.
+  - **Composition:** Build complex functionality by composing smaller, reusable pure functions.
+  - **Side Effects:** Isolate side effects (like database interactions, API calls, etc.) from the core application logic. They should be handled at the boundaries of the application (e.g., in the main `index.ts` file or dedicated middleware).
+- **Function Declarations:** Prefer using arrow functions (`=>`) for their conciseness and lexical `this` binding, which aligns well with functional programming practices.
 - **Asynchronous Operations:** Use `async/await` for handling promises. Avoid callback hell.
 
 ## 4. Error Handling

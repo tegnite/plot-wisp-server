@@ -6,9 +6,9 @@
     "outDir": "./dist",
     "esModuleInterop": true,
     "strict": true,
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "@app/*": ["src/*"]
+      "@app/*": ["./*"]
     }
   },
   "include": ["src/**/*.ts"],
