@@ -8,5 +8,9 @@ export const User_Repository = {
 
     async find_user_by_id (id : string) : Promise<User_Interface | null> {
         return User_Model.findById(id);
+    },
+
+    async find_users() : Promise<User_Interface[]> {
+        return User_Model.find();
     }
 }
