@@ -1,5 +1,4 @@
 import {Request, Response} from "express";
-
 import {catch_async} from "@app/utils/catch-async.util";
 import {User_Create_DTO, User_Login_DTO} from "@app/modules/users/users.types";
 import {send_success_response} from "@app/utils/response.util";
@@ -22,6 +21,11 @@ export const Auth_Controller = {
         const { user, token } = await Auth_Service.login_user(req.body as User_Login_DTO);
         set_token_to_cookie(res, token);
         send_success_response(res, user, { status_code: 200, message: 'User login successfully', token });
+    }),
+
+    logout : catch_async(async (_: Request, res: Response) => {
+        res.clearCookie('token');
+        send_success_response(res, null, { status_code: 200, message: 'User logged out successfully' });
     })
 }
 
