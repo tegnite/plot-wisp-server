@@ -59,5 +59,5 @@ export const Auth_Service = {
 
 function get_token_from_user(user_data : User_Interface) : string {
     const jwt_secret = get_env('JWT_SECRET');
-    return jwt.sign({ id: user_data._id }, jwt_secret, { expiresIn: '1h' });
+    return jwt.sign({ id: user_data._id }, jwt_secret, { expiresIn: '2d' });
 }
